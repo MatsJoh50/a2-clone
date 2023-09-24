@@ -23,23 +23,23 @@ function todoOutput() {
 
   //Clears the list
   document.getElementById("myTodoList").innerHTML = "";
-  
+
   var compCounter = 0;
 
   todoList.forEach((index) => {
-    var idMyPara = index.todoId;
+    // var idMyPara = index.todoId;
 
     var dynamicLi = document.createElement("li"); //Creates a line
     var myLable = document.createElement("label"); //Creates a lable in the Line abowe
     var myPara = document.createElement("p"); //Creates a <p> to the label
 
     //Checks what CSS class to use.
-    myPara.classList.add("settings");
+    myLable.classList.add("settings");
     if (index.todoComp) {
       myPara.classList.add("taskDone");
-      compCounter++
+      compCounter++;
     }
-    myPara.setAttribute("id", idMyPara);
+    myPara.setAttribute("id", index.todoId);
 
     myPara.addEventListener("click", function () {
       if (index.todoComp != true) {
@@ -49,34 +49,31 @@ function todoOutput() {
       todoOutput();
     });
 
-  // *** Try to add edit and delete icon's with eventListeners ***
-  var mySpan = document.createElement("span");
-  // mySpan.classList.add("box");
+    // *** Try to add delete icon's with eventListeners ***
+    var mySpan = document.createElement("span");
+    mySpan.classList.add("box");
+    var deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fa");
+    deleteIcon.classList.add("fa-trash");
+    deleteIcon.addEventListener("click", function () {
+      if(todoList.length == 1){
+        todoList.pop();
+        compCounter--;
+        counter.textContent = "Compleated tasks: " + compCounter;
+      } else
+        todoList.splice(index.todoId, 1);
+        compCounter--;
+    });
+    mySpan.appendChild(deleteIcon);
 
-  var editIcon = document.createElement("i");
-  editIcon.classList.add("fa");
-  editIcon.classList.add("fa-pencil-square");
+    myPara.textContent = index.todoName; //Sets the todoTask to the P-tag
+    myPara.appendChild(mySpan);
+    myLable.appendChild(myPara); //appends the <p> to the Lable
+    dynamicLi.appendChild(myLable); //appends the lable with <p> to the Line
+    // dynamicLi.appendChild(myPara); //appends the lable with <p> to the Line
+    document.getElementById("myTodoList").appendChild(dynamicLi);
 
-  var deleteIcon = document.createElement("i");
-  deleteIcon.classList.add("fa");
-  deleteIcon.classList.add("fa-trash");
-
-
-  mySpan.appendChild(editIcon);
-  mySpan.appendChild(deleteIcon);
-
-  
-  myPara.textContent = index.todoName; //Sets the todoTask to the P-tag
-  myLable.appendChild(myPara); //appends the <p> to the Lable
-  dynamicLi.appendChild(myLable); //appends the lable with <p> to the Line
-  dynamicLi.appendChild(mySpan);
-  document.getElementById("myTodoList").appendChild(dynamicLi);
-    
-    
-    
     //Counter
     counter.textContent = "Compleated tasks: " + compCounter;
   });
-
-
 }
