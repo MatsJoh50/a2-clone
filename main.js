@@ -58,7 +58,7 @@ function todoOutput() {
     deleteIcon.addEventListener("click", function () {
       if(todoList.length == 1){
         todoList.pop();
-        compCounter--;
+        compCounter = 0;
         counter.textContent = "Compleated tasks: " + compCounter;
       } else
         todoList.splice(index.todoId, 1);
