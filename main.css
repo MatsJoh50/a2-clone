@@ -1,0 +1,59 @@
+body {
+  background: rgb(207, 207, 207);
+}
+
+section {
+  align-self: center;
+  margin-top: 5%;
+  margin-left: 10%;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10%;
+  max-width: 20%;
+  align-content: center;
+  box-shadow: 1px;
+  border-color: black;
+  border: 1px solid;
+  background-color: white;
+}
+
+div {
+  border: 1px, solid;
+  border-color: black, solid;
+}
+
+.box {
+  align-content: right;
+  background-color: aqua;
+  margin: 5px;
+}
+
+li {
+  list-style-type: numbers;
+  margin: 0px;
+  padding: 0px;
+  overflow-wrap: normal;
+}
+
+input {
+  border-color: black;
+  margin-left: 30px;
+}
+
+.settings {
+  background-color: white;
+  border: 1px;
+  border-color: black;
+  margin: 0px;
+  padding: 0px;
+}
+.settings:hover {
+  background-color: rgb(167, 248, 198);
+  opacity: 50%;
+}
+.taskDone {
+  border: 1px solid;
+  opacity: 50%;
+  background-color: rgb(167, 248, 198);
+  text-decoration: line-through;
+}
