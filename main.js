@@ -4,7 +4,7 @@ todoButton.addEventListener("click", addToList);
 
 function addToList() {
   let inputName = document.getElementById("input").value;
-  if (inputName.length > 0) {
+  if (inputName.length != 0) {
     let todoObject = {
       todoId: todoList.length,
       todoName: inputName,
@@ -18,9 +18,6 @@ function addToList() {
 }
 
 function todoOutput() {
-  //adress for compleation counter
-  const counter = document.getElementById("counter");
-
   //Clears the list
   document.getElementById("myTodoList").innerHTML = "";
 
@@ -41,6 +38,7 @@ function todoOutput() {
     }
     myPara.setAttribute("id", index.todoId);
 
+    //Block for: "Click to compleate task"
     myPara.addEventListener("click", function () {
       if (index.todoComp != true) {
         index.todoComp = true;
@@ -49,20 +47,23 @@ function todoOutput() {
       todoOutput();
     });
 
-    // *** Try to add delete icon's with eventListeners ***
+    // Block for: to add delete icon's with eventListeners
     let mySpan = document.createElement("span");
     mySpan.classList.add("box");
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa");
     deleteIcon.classList.add("fa-trash");
     deleteIcon.addEventListener("click", function () {
-      if(todoList.length == 1){
+      if (todoList.length == 1) {
         todoList.pop();
-        compCounter = 0;
-        counter.textContent = "Compleated tasks: " + compCounter;
-      } else
-        todoList.splice(index.todoId, 1);
-        compCounter--;
+        // compCounter = 0;
+        // todoRemoval(compCounter);;
+      } else 
+      console.log(todoList.indexOf(index));
+      todoList.splice(todoList.indexOf(index), 1);
+      // compCounter--;
+      // todoRemoval(compCounter);;
+
     });
     mySpan.appendChild(deleteIcon);
 
@@ -74,6 +75,23 @@ function todoOutput() {
     document.getElementById("myTodoList").appendChild(dynamicLi);
 
     //Counter
-    counter.textContent = "Compleated tasks: " + compCounter;
+    // todoRemoval(compCounter);
   });
+  countCompleation(todoList);
+}
+
+function todoRemoval(count) {
+  //adress for compleation counter
+  if(count < 0) count = 0;
+  const counter = document.getElementById("counter");
+  counter.textContent = "Compleated tasks: " + count;
+}
+
+function countCompleation(list){
+  let count = 0;
+  list.forEach((comp) => {
+    if(comp.todoComp) count++;
+  });
+  counter.textContent = "Compleated tasks: " + count;
+
 }

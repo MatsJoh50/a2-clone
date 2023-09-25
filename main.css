@@ -37,6 +37,7 @@ input {
 .box {
   justify-self: right;
   float: right;
+  background-image: fa fa-trash;
 }
 .settings {
   background-color: white;
@@ -54,4 +55,9 @@ input {
   opacity: 50%;
   background-color: rgb(167, 248, 198);
   text-decoration: line-through;
+}
+
+i:hover{
+  background-color: rgb(167, 248, 198);
+
 }
