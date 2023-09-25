@@ -21,10 +21,7 @@ function todoOutput() {
   //Clears the list
   document.getElementById("myTodoList").innerHTML = "";
 
-  let compCounter = 0;
-
   todoList.forEach((index) => {
-    // let idMyPara = index.todoId;
 
     let dynamicLi = document.createElement("li"); //Creates a line
     let myLable = document.createElement("label"); //Creates a lable in the Line abowe
@@ -34,7 +31,6 @@ function todoOutput() {
     myLable.classList.add("settings");
     if (index.todoComp) {
       myPara.classList.add("taskDone");
-      compCounter++;
     }
     myPara.setAttribute("id", index.todoId);
 
@@ -56,14 +52,7 @@ function todoOutput() {
     deleteIcon.addEventListener("click", function () {
       if (todoList.length == 1) {
         todoList.pop();
-        // compCounter = 0;
-        // todoRemoval(compCounter);;
-      } else 
-      console.log(todoList.indexOf(index));
-      todoList.splice(todoList.indexOf(index), 1);
-      // compCounter--;
-      // todoRemoval(compCounter);;
-
+      } else todoList.splice(todoList.indexOf(index), 1);
     });
     mySpan.appendChild(deleteIcon);
 
@@ -71,27 +60,15 @@ function todoOutput() {
     myPara.appendChild(mySpan);
     myLable.appendChild(myPara); //appends the <p> to the Lable
     dynamicLi.appendChild(myLable); //appends the lable with <p> to the Line
-    // dynamicLi.appendChild(myPara); //appends the lable with <p> to the Line
     document.getElementById("myTodoList").appendChild(dynamicLi);
-
-    //Counter
-    // todoRemoval(compCounter);
   });
   countCompleation(todoList);
 }
 
-function todoRemoval(count) {
-  //adress for compleation counter
-  if(count < 0) count = 0;
-  const counter = document.getElementById("counter");
-  counter.textContent = "Compleated tasks: " + count;
-}
-
-function countCompleation(list){
+function countCompleation(list) {
   let count = 0;
   list.forEach((comp) => {
-    if(comp.todoComp) count++;
+    if (comp.todoComp) count++;
   });
   counter.textContent = "Compleated tasks: " + count;
-
 }
