@@ -1,11 +1,11 @@
-var todoList = [];
-var todoButton = document.getElementById("addTodoButton");
+let todoList = [];
+let todoButton = document.getElementById("addTodoButton");
 todoButton.addEventListener("click", addToList);
 
 function addToList() {
-  var inputName = document.getElementById("input").value;
+  let inputName = document.getElementById("input").value;
   if (inputName.length > 0) {
-    var todoObject = {
+    let todoObject = {
       todoId: todoList.length,
       todoName: inputName,
       todoComp: false,
@@ -24,14 +24,14 @@ function todoOutput() {
   //Clears the list
   document.getElementById("myTodoList").innerHTML = "";
 
-  var compCounter = 0;
+  let compCounter = 0;
 
   todoList.forEach((index) => {
-    // var idMyPara = index.todoId;
+    // let idMyPara = index.todoId;
 
-    var dynamicLi = document.createElement("li"); //Creates a line
-    var myLable = document.createElement("label"); //Creates a lable in the Line abowe
-    var myPara = document.createElement("p"); //Creates a <p> to the label
+    let dynamicLi = document.createElement("li"); //Creates a line
+    let myLable = document.createElement("label"); //Creates a lable in the Line abowe
+    let myPara = document.createElement("p"); //Creates a <p> to the label
 
     //Checks what CSS class to use.
     myLable.classList.add("settings");
@@ -50,9 +50,9 @@ function todoOutput() {
     });
 
     // *** Try to add delete icon's with eventListeners ***
-    var mySpan = document.createElement("span");
+    let mySpan = document.createElement("span");
     mySpan.classList.add("box");
-    var deleteIcon = document.createElement("i");
+    let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa");
     deleteIcon.classList.add("fa-trash");
     deleteIcon.addEventListener("click", function () {
