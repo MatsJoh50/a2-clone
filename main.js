@@ -23,8 +23,8 @@ function todoOutput() {
 
   todoList.forEach((index) => {
 
-    let dynamicLi = document.createElement("li"); //Creates a line
-    let myLable = document.createElement("label"); //Creates a lable in the Line abowe
+    let dynamicLi = document.createElement("li"); //Creates a list item
+    let myLable = document.createElement("label"); //Creates a lable in the list item abowe
     let myPara = document.createElement("p"); //Creates a <p> to the label
 
     //Checks what CSS class to use.
