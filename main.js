@@ -2,6 +2,7 @@ const todoList = [];
 let todoButton = document.getElementById("addTodoButton");
 todoButton.addEventListener("click", addToList);
 
+
 const menu = document.querySelector("#menuBox");
 const dropDownMenu = document.getElementById("dropDownMenuButton");
 dropDownMenu.addEventListener("click", dropMenu);
