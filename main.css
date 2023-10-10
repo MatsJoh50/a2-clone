@@ -81,3 +81,8 @@ i:hover {
   background-color: #6d9ebc(167, 248, 198);
 
 }
+
+#disclaimer{
+  font-size: smaller;
+  font-style: italic;
+}
