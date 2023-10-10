@@ -2,6 +2,25 @@ const todoList = [];
 let todoButton = document.getElementById("addTodoButton");
 todoButton.addEventListener("click", addToList);
 
+const menu = document.querySelector("#menuBox");
+const dropDownMenu = document.getElementById("dropDownMenuButton");
+dropDownMenu.addEventListener("click", dropMenu);
+
+
+
+  function dropMenu() {
+  if(menu.classList.contains("dropDownMenuStart")){
+    menu.classList.remove("dropDownMenuStart");
+    menu.classList.add("dropDownMenuFinnish");
+  } else{
+    
+    menu.classList.remove("dropDownMenuFinnish");
+    menu.classList.add("dropDownMenuStart");
+  }
+
+};
+
+
 function addToList() {
   let inputName = document.getElementById("input").value;
   if (inputName.length != 0) {
@@ -74,8 +93,8 @@ function countCompleation(list) {
   counter.textContent = "Compleated tasks: " + count;
 }
 
-function sunset(){
+function sunset() {
   let whatTime = todoList.length * 10;
   // getComputedStyle(document.documentElement).getPropertyValue('--sunset') = whatTime;
-document.documentElement.style.setProperty('--sunset', whatTime+'%')
+  document.documentElement.style.setProperty('--sunset', whatTime + '%')
 }

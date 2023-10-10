@@ -1,3 +1,5 @@
+
+
 :root {
   --sunset: 00%;
 }
@@ -7,6 +9,7 @@ body {
   height: 90vh;
   padding: 0%;
   margin-left: 0px;
+  display: flex;
 }
 
 footer {
@@ -19,8 +22,7 @@ footer {
 }
 
 section {
-  align-self: center;
-  margin-top: 5%;
+  align-self: flex-start;
   margin-right: auto;
   margin-left: auto;
   padding-top: 10px;
@@ -90,3 +92,50 @@ i:hover {
 #mstm{
   text-decoration: underline;
 }
+
+.menuBox{
+  flex-direction: row;
+  width: 500px;
+}
+
+#dropDownMenuButton{
+  /* align-content: flex-end;
+  align-items: flex-end; */
+  float: right;
+  margin-right: 0px;
+  font-size: 50px;
+  color: #fbedcb;
+}
+
+.dropDownMenuFinnish{
+  background-color: bisque;
+  float: right;
+  width: 200px;
+  height: 400px;
+
+
+  transition: width 1s, height 1.5s;
+
+  margin-top: 50px;
+  margin-right: -45px;
+  
+}
+
+
+.dropDownMenuStart{
+  background-color: bisque;
+  float: right;
+  /* position: absolute; */
+  
+  width: 0px;
+  height: 0px;
+  opacity: 0%;
+  transition: 1s;
+
+  margin-top: 50px;
+  margin-right: -45px;
+  
+}
+
+
+
