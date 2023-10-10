@@ -1,4 +1,4 @@
-let todoList = [];
+const todoList = [];
 let todoButton = document.getElementById("addTodoButton");
 todoButton.addEventListener("click", addToList);
 
@@ -63,6 +63,7 @@ function todoOutput() {
     document.getElementById("myTodoList").appendChild(dynamicLi);
   });
   countCompleation(todoList);
+  sunset();
 }
 
 function countCompleation(list) {
@@ -71,4 +72,10 @@ function countCompleation(list) {
     if (comp.todoComp) count++;
   });
   counter.textContent = "Compleated tasks: " + count;
+}
+
+function sunset(){
+  let whatTime = todoList.length * 10;
+  // getComputedStyle(document.documentElement).getPropertyValue('--sunset') = whatTime;
+document.documentElement.style.setProperty('--sunset', whatTime+'%')
 }
