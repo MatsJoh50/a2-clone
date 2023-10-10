@@ -12,17 +12,19 @@ dropDownMenu.addEventListener("click", dropMenu);
   if(menu.classList.contains("dropDownMenuStart")){
     menu.classList.remove("dropDownMenuStart");
     menu.classList.add("dropDownMenuFinnish");
+    dropDownMenu.classList.add("glow");
   } else{
     
     menu.classList.remove("dropDownMenuFinnish");
     menu.classList.add("dropDownMenuStart");
+    dropDownMenu.classList.remove("glow");
   }
 
 };
 
 
 function addToList() {
-  let inputName = document.getElementById("input").value;
+  const inputName = document.getElementById("input").value;
   if (inputName.length != 0) {
     let todoObject = {
       todoId: todoList.length,
@@ -33,7 +35,7 @@ function addToList() {
     document.getElementById("input").value = ""; //Clears the <input> field
     todoList.push(todoObject);
     todoOutput();
-  } else alert("Du måste skriva något");
+  } else document.getElementById("input").value = "Du måste skriva något";
 }
 
 function todoOutput() {
