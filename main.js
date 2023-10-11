@@ -25,6 +25,10 @@ dropDownMenu.addEventListener("click", dropMenu);
 
 
 function addToList() {
+  if(document.getElementById("error").innerText.length != 0){
+    document.getElementById("error").innerText = "";
+  }
+  
   const inputName = document.getElementById("input").value;
   if (inputName.length != 0) {
     let todoObject = {
@@ -36,7 +40,7 @@ function addToList() {
     document.getElementById("input").value = ""; //Clears the <input> field
     todoList.push(todoObject);
     todoOutput();
-  } else document.getElementById("input").value = "Du måste skriva något";
+  } else document.getElementById("error").innerText = "Du måste skriva något";
 }
 
 function todoOutput() {
