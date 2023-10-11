@@ -7,6 +7,8 @@ const menu = document.querySelector("#menuBox");
 const dropDownMenu = document.getElementById("dropDownMenuButton");
 dropDownMenu.addEventListener("click", dropMenu);
 
+document.querySelector("#main-css").addEventListener("click", function(){ swapStyleSheet("main.css")});
+document.querySelector("#alex-k").addEventListener("click", function(){ swapStyleSheet("alex.css")});
 
 
   function dropMenu() {
@@ -54,7 +56,7 @@ function todoOutput() {
     let myPara = document.createElement("p"); //Creates a <p> to the label
 
     //Checks what CSS class to use.
-    myLable.classList.add("settings");
+    myPara.classList.add("todoListItem");
     if (index.todoComp) {
       myPara.classList.add("taskDone");
     }
@@ -70,7 +72,7 @@ function todoOutput() {
     });
 
     // Block for: to add delete icon's with eventListeners
-    let mySpan = document.createElement("span");
+    let mySpan = document.createElement("div");
     mySpan.classList.add("box");
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa");
@@ -83,8 +85,9 @@ function todoOutput() {
     mySpan.appendChild(deleteIcon);
 
     myPara.textContent = index.todoName; //Sets the todoTask to the P-tag
-    myPara.appendChild(mySpan);
     myLable.appendChild(myPara); //appends the <p> to the Lable
+    myPara.appendChild(mySpan);
+    // myPara.appendChild(mySpan);
     dynamicLi.appendChild(myLable); //appends the lable with <p> to the Line
     document.getElementById("myTodoList").appendChild(dynamicLi);
   });

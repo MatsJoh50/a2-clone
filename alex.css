@@ -1,0 +1,94 @@
+
+body{
+    display: flex;
+    background: linear-gradient(145deg, rgba(157, 255, 255, 0.8) 0%, rgba(247, 152, 234, 0.6) 100%);
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+h1{
+    align-self: center;
+    font-size: xx-large;
+}
+#counter{
+    align-self: center;
+}
+section{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20%;
+    
+    background-color: rgba(228, 234, 255, 0.849);
+    border-radius: 5px;
+    box-shadow: 1px 4px 5px black;
+
+    min-height: 50vh;
+    width: 50vw;
+}
+
+h1.section{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inputBox{
+    align-self: center;
+}
+
+
+#input{
+
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    height: 3vh;
+    
+}
+
+#addTodoButton{
+    background-color: rgb(39, 140, 255);
+    box-shadow: 0;
+    height: 3vh;
+    border: 0;
+    border-radius: 5px;
+    color: white;
+
+}
+
+#salesPitch{
+    opacity: 0;
+}
+#disclaimer{
+    opacity: 0;
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+}
+.todoListItem{
+    font-size: 20px;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 4px 0px;
+    width: 80%;
+    border-bottom: 1px solid;
+    height: 30px;
+
+
+}
+
+.taskDone{
+    color: green;
+    text-decoration: line-through;
+}
+
+.box {
+    display: flex;
+    float: right;
+    justify-content: right;
+    font-size: 25px;
+    width: fit-content;
+    color: red;
+}

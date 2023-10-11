@@ -6,7 +6,9 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Uppgift 4 - ToDo List</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+    <link rel='stylesheet' type='text/css' media='screen' href='alex.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='dropmenu.css'>
     <script src="https://kit.fontawesome.com/db4693409d.js" crossorigin="anonymous"></script>
     <script src='main.js' defer></script>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -16,16 +18,16 @@
 
     <section>
         <h1>Todo List</h1>
-        <p>The webs most comfy ToDo app, with the new powerfull <span id="mstm">M.S.T.M-System</span> we will help you
+        <p id="salesPitch">The webs most comfy ToDo app, with the new powerfull <span id="mstm">M.S.T.M-System</span> we will help you
             on the chores of the day.</p>
         <p id="counter">Compleated tasks: 0</p>
         <p id="error"></p>
-        <div>
+        <div class="inputBox">
             <input id="input" type="text" placeholder="Enter task here" method="GET"></input>
             <button id="addTodoButton">Add Task</button>
-            <ul id="myTodoList">
-            </ul>
         </div>
+        <ul id="myTodoList">
+        </ul>
         <p id="disclaimer">*M.S.T.M-System(modular sunset time management) isn't actualy a real system. </p>
     </section>
 
@@ -33,10 +35,8 @@
         <div id="dropDownMenuButton"><i class="fi fi-rr-list"></i></div>
         <nav class="dropDownMenuStart" id="menuBox">
             <ul>
-
-
-                <li class="drop">kan vara menyval</li>
-                <li class="drop">eller här</li>
+                <li class="drop" id="main-css">Main CSS</li>
+                <li class="drop" id="alex-k">Alex K</li>
                 <li class="drop">kanske här</li>
                 <li class="drop"> eller här</li>
             </ul>
