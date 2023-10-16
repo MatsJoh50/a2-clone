@@ -1,98 +1,232 @@
 :root {
-  --sunset: 00%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body {
-  background: linear-gradient(180deg, rgba(131, 58, 180, 0.8) 0%, rgba(253, 29, 29, 0.6) var(--sunset), rgba(252, 176, 69, 0.4) 100%), url(images/ocean2.png);
-  background-size: cover;
+  background: linear-gradient(to bottom, #ffcccc 0%, #ff9999 100%);  background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
-
+  
   height: 100vh;
   padding: 0%;
-  margin-left: 0px;
-  display: flex;
-
+  
   overflow: hidden;
 }
 
-footer {
-  position: absolute;
-  bottom: 0%;
-  background: rgb(68, 58, 180);
-  background: linear-gradient(180deg, rgba(68, 58, 180, 1) 0%, rgba(47, 29, 253, 1) 50%, rgba(68, 58, 180, 1) 100%);
-  height: 10vh;
-  width: 100vw;
-}
-
 section {
-  align-self: flex-start;
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10%;
-  width: 30%;
+  display: flex;
+  
+  flex-direction: column;
+  background-color: white;
+
+  align-self: initial;
   align-content: center;
-  box-shadow: 1px;
-  border-color: black;
-  border: 1px solid;
-  background-color: #fbedcb;
+  align-items: center;
+
+  margin-top: 10px;
+  width: 60vw;
+
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, .4);
+
+  animation: sectionBounce 0.5s;
+
 }
 
-div {
-  border: 1px, solid;
-  border-color: black, solid;
+section > h1{
+  font-size: 50px;
+  color: black;
+  margin: 10px 0px 10px 0px;
 }
+
+#counter{
+  margin: 0px 0px 20px 0px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+}
+
 
 li {
-  list-style-type: numbers;
+  list-style-type:none;
   margin: 0px;
   padding: 0px;
   overflow-wrap: normal;
 }
 
-input {
-  border-color: black;
-  margin-left: auto;
+#inputBox{
+  align-self: initial;
+  display: flex;
+  flex-direction: column;
 }
 
-.box {
-  justify-self: right;
+#input {
+  border: 1px solid;
+  border-color: lightgray;
+  border-radius: 2px;
+  margin-left: auto;
+  font-size: larger;
+  height: 25px;
+
+}
+
+#addTodoButton{
+  font-size: larger;
+  padding: 2px 8px;
+  background-color: rgba(211, 211, 211, 0.226);
+  border: 1px solid lightgray ;
+  border-radius: 2px;
+  height: 29px;
+}
+
+.trashcan {
+  /* justify-self:center; */
+  justify-content:center;
   float: right;
-  background-image: fa fa-trash;
+  color: rgba(128, 128, 128, 0.295);
+  margin-left: 20px;
+  margin-top: 6px;
+  font-size: medium;
 }
 
 .todoListItem {
-  background-color: white;
   border: 1px;
   border-color: black;
   margin: 0px;
   padding: 0px;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: x-large;
+  transition: 1s;
+
 }
 
-.todoListItem:hover {
+.todoInsertAni{
+  animation: todoItemsInsert 0.2s;
+
+}
+
+.todoListItem > p:hover {
   background-color: #6d9ebc(167, 248, 198);
   opacity: 50%;
 }
 
 .taskDone {
-  border: 1px solid;
   opacity: 50%;
-  background-color: #6d9ebc(167, 248, 198);
+  background-color: #c4c4c471(167, 248, 198);
   text-decoration: line-through;
 }
 
-i:hover {
+/* i:hover {
   background-color: #6d9ebc(167, 248, 198);
 
-}
+} */
 
-#disclaimer {
-  font-size: smaller;
+.error{
+  animation-name: errorAni;
+  animation-duration: 0.3s;
+  animation-iteration-count: 3;
+  color: red;
   font-style: italic;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#mstm {
-  text-decoration: underline;
+/* @keyframes sectionBounce {
+  0% {
+		transform: translateY(0%);
+	}
+
+	4% {
+		transform: translateY(-0.04%);
+	}
+
+	8% {
+		transform: translateY(-0.16%);
+	}
+
+	14% {
+		transform: translateY(-0.17%);
+	}
+
+	18% {
+		transform: translateY(0.04%);
+	}
+
+	26% {
+		transform: translateY(0.58%);
+	}
+
+	28% {
+		transform: translateY(0.55%);
+	}
+
+	40% {
+		transform: translateY(-1.56%);
+	}
+
+	42% {
+		transform: translateY(-1.64%);
+	}
+
+	56% {
+		transform: translateY(4.63%);
+	}
+
+	58% {
+		transform: translateY(4.4%);
+	}
+
+	72% {
+		transform: translateY(-13.12%);
+	}
+
+	86% {
+		transform: translateY(37.06%);
+	}
+
+	100% {
+		transform: translateY(-120%);
+	}
+
+
+} */
+@keyframes sectionBounce {
+  0%{
+    opacity: 0;
+    transform: translateY(-110%);
+  }
+
+	40% {
+    transform: translateY(10.06%);
+
+  }
+
+	100% {
+		transform: translateY(0%);
+	}
+
+
+}
+
+@keyframes todoItemsInsert {
+  0%{
+    opacity: 0;
+    transform: translateY(100.06%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  
+}
+
+@keyframes errorAni {
+  0%{
+    opacity: 0%;
+  }
+  100%{
+    opacity: 100%;
+  }
+  
 }

@@ -2,51 +2,31 @@ const todoList = [];
 let todoButton = document.getElementById("addTodoButton");
 todoButton.addEventListener("click", addToList);
 
-
-const menu = document.querySelector("#menuBox");
-const dropDownMenu = document.getElementById("dropDownMenuButton");
-dropDownMenu.addEventListener("click", dropMenu);
-
-document.querySelector("#main-css").addEventListener("click", function(){ swapStyleSheet("main.css")});
-document.querySelector("#alex-k").addEventListener("click", function(){ swapStyleSheet("alex.css")});
-
-
-  function dropMenu() {
-  if(menu.classList.contains("dropDownMenuStart")){
-    menu.classList.remove("dropDownMenuStart");
-    menu.classList.add("dropDownMenuFinnish");
-    dropDownMenu.classList.add("glow");
-  } else{
-    
-    menu.classList.remove("dropDownMenuFinnish");
-    menu.classList.add("dropDownMenuStart");
-    dropDownMenu.classList.remove("glow");
-  }
-
-};
-
-
 function addToList() {
-  if(document.getElementById("error").innerText.length != 0){
+  if (document.getElementById("error").innerText.length != 0) {
     document.getElementById("error").innerText = "";
   }
-  
+
   const inputName = document.getElementById("input").value;
   if (inputName.length != 0) {
     let todoObject = {
       todoId: todoList.length,
       todoName: inputName,
       todoComp: false,
+      todoAni: false,
     };
     // console.log(todoObject);
     document.getElementById("input").value = ""; //Clears the <input> field
     todoList.push(todoObject);
     todoOutput();
-  } else document.getElementById("error").innerText = "Du måste skriva något";
-}
-
-function todoOutput() {
-  //Clears the list
+  } else
+    document.getElementById("error").innerText = "Input must not be empty";
+    document.getElementById("error").classList.add("error");
+  }
+  
+  function todoOutput() {
+    //Clears the list
+    document.getElementById("error").classList.remove("error");
   document.getElementById("myTodoList").innerHTML = "";
 
   todoList.forEach((index) => {
@@ -57,6 +37,11 @@ function todoOutput() {
 
     //Checks what CSS class to use.
     myPara.classList.add("todoListItem");
+    if (!index.todoAni) {
+      myPara.classList.add("todoInsertAni");
+      index.todoAni = true;
+    }
+
     if (index.todoComp) {
       myPara.classList.add("taskDone");
     }
@@ -73,7 +58,7 @@ function todoOutput() {
 
     // Block for: to add delete icon's with eventListeners
     let mySpan = document.createElement("div");
-    mySpan.classList.add("box");
+    mySpan.classList.add("trashcan");
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa");
     deleteIcon.classList.add("fa-trash");
@@ -92,7 +77,6 @@ function todoOutput() {
     document.getElementById("myTodoList").appendChild(dynamicLi);
   });
   countCompleation(todoList);
-  sunset();
 }
 
 function countCompleation(list) {
@@ -100,11 +84,5 @@ function countCompleation(list) {
   list.forEach((comp) => {
     if (comp.todoComp) count++;
   });
-  counter.textContent = "Compleated tasks: " + count;
-}
-
-function sunset() {
-  let whatTime = todoList.length * 10;
-  // getComputedStyle(document.documentElement).getPropertyValue('--sunset') = whatTime;
-  document.documentElement.style.setProperty('--sunset', whatTime + '%')
+  counter.textContent = count + " Completed";
 }
