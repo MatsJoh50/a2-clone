@@ -70,7 +70,7 @@ section>h1 {
 
 
 
-#input {
+#todoInput {
   border: 1px solid;
   border-color: lightgray;
   border-radius: 2px;
@@ -79,9 +79,10 @@ section>h1 {
   height: 25px;
   opacity: 0;
   transition: 150ms;
+}
 
-
-
+#todoInput:focus{
+  border: 1px solid blue;
 }
 
 #addTodoButton {
@@ -118,6 +119,12 @@ li {
   margin-top: 0;
   padding-top: 7px;
   margin-left: 15px;
+  transition: color 300ms;
+}
+.trashcan:hover{
+  color: black;
+  cursor: pointer;
+
 }
 
 .todoListItem {
