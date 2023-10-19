@@ -1,10 +1,33 @@
+const errorMsg = document.querySelector("#error");
+
+const todoTitle = document.getElementById("todoTitle");
+const count = document.getElementById("counter");
+const input = document.getElementById("input");
+const todobtn = document.getElementById("addTodoButton");
+
+// Fade in's
+setTimeout(function () {
+  todoTitle.style.opacity = 1;
+}, 1200);
+
+setTimeout(function () {
+  count.style.opacity = 1;
+}, 1400);
+
+setTimeout(function () {
+  input.style.opacity = 1;
+  todobtn.style.opacity = 1;
+}, 1600);
+
 const todoList = [];
 let todoButton = document.getElementById("addTodoButton");
 todoButton.addEventListener("click", addToList);
 
 function addToList() {
-  if (document.getElementById("error").innerText.length != 0) {
-    document.getElementById("error").innerText = "";
+  errorMsg.classList.remove("error");
+
+  if (errorMsg.innerText.length != 0) {
+    errorMsg.innerText = "";
   }
 
   const inputName = document.getElementById("input").value;
@@ -20,25 +43,27 @@ function addToList() {
     todoList.push(todoObject);
     todoOutput();
   } else
-    document.getElementById("error").innerText = "Input must not be empty";
-    document.getElementById("error").classList.add("error");
-  }
-  
-  function todoOutput() {
-    //Clears the list
-    document.getElementById("error").classList.remove("error");
+    errorMsg.innerText = "Input must not be empty";
+  errorMsg.classList.add("error");
+}
+
+function todoOutput() {
+  //Clears the list
   document.getElementById("myTodoList").innerHTML = "";
 
   todoList.forEach((index) => {
 
-    let dynamicLi = document.createElement("li"); //Creates a list item
-    let myLable = document.createElement("label"); //Creates a lable in the list item abowe
-    let myPara = document.createElement("p"); //Creates a <p> to the label
+    //Creates a lable in the list item abowe
+    let myDiv = document.createElement("div");
+    //Creates a list item
+    let dynamicLi = document.createElement("li");
+    //Creates a <p> to the label
+    let myPara = document.createElement("p");
 
     //Checks what CSS class to use.
     myPara.classList.add("todoListItem");
     if (!index.todoAni) {
-      myPara.classList.add("todoInsertAni");
+      dynamicLi.classList.add("todoInsertAni");
       index.todoAni = true;
     }
 
@@ -51,29 +76,39 @@ function addToList() {
     myPara.addEventListener("click", function () {
       if (index.todoComp != true) {
         index.todoComp = true;
-        todoOutput();
-      } else index.todoComp = false;
-      todoOutput();
+        this.classList.add("taskDone");
+      } else if (index.todoComp) {
+        index.todoComp = false;
+        this.classList.remove("taskDone");
+      }
+      countCompleation(todoList);
+
     });
 
     // Block for: to add delete icon's with eventListeners
-    let mySpan = document.createElement("div");
-    mySpan.classList.add("trashcan");
+    let myTrashcan = document.createElement("div");
+    myTrashcan.classList.add("trashcan");
     let deleteIcon = document.createElement("i");
     deleteIcon.classList.add("fa");
     deleteIcon.classList.add("fa-trash");
-    deleteIcon.addEventListener("click", function () {
+
+    // REMOVE OBJECT
+    myTrashcan.addEventListener("click", function () {
       if (todoList.length == 1) {
         todoList.pop();
-      } else todoList.splice(todoList.indexOf(index), 1);
+        todoOutput();
+      } else if (1 < todoList.length) {
+        todoList.splice(todoList.indexOf(index), 1);
+        todoOutput();
+      }
     });
-    mySpan.appendChild(deleteIcon);
+    myTrashcan.appendChild(deleteIcon);
 
     myPara.textContent = index.todoName; //Sets the todoTask to the P-tag
-    myLable.appendChild(myPara); //appends the <p> to the Lable
-    myPara.appendChild(mySpan);
+    myDiv.appendChild(myPara); //appends the <p> to the Lable
     // myPara.appendChild(mySpan);
-    dynamicLi.appendChild(myLable); //appends the lable with <p> to the Line
+    dynamicLi.appendChild(myDiv); //appends the lable with <p> to the Line
+    dynamicLi.appendChild(myTrashcan);
     document.getElementById("myTodoList").appendChild(dynamicLi);
   });
   countCompleation(todoList);
